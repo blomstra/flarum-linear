@@ -1,0 +1,10 @@
+blomstra-linear:
+  admin:
+    settings:
+      title: Blomstra Linear
+      token_label: Your Linear Personal Access Token
+      token_description: Get it from your Linear Account at https://linear.app.
+
+
+  forum:
+
