@@ -22,18 +22,4 @@ return [
         ->js(__DIR__.'/js/dist/admin.js'),
 
     new Extend\Locales(__DIR__.'/resources/locale'),
-/*
-        ->content(function (Document $document) {
-            $document->payload['blomstra-linear.services'] = array_keys(GeoIP::$services);
-        }),
-*/
-    /**
-    new Extend\Locales(__DIR__.'/resources/locale'),
-
-    (new Extend\Settings())
-        ->default('blomstra-linear.service', 'ipapi'),
-
-    (new Extend\Routes('api'))
-        ->get('/ip_info/{ip}', 'blomstra-linear.api.ip_info', Api\Controller\ShowIpInfoController::class),
-**/
 ];
