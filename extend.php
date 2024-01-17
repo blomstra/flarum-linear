@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of blomstra/flarum-ext-linear.
+ * This file is part of blomstra/flarum-linear.
  *
  * Copyright (c) Blomstra.
  *
