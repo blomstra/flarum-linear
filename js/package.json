@@ -5,7 +5,6 @@
   "prettier": "@flarum/prettier-config",
   "dependencies": {
     "@flarum/prettier-config": "^1.0.0",
-    "country-code-emoji": "^1.0.0",
     "external-load": "^1.0.0",
     "flarum-tsconfig": "^1.0.2",
     "flarum-webpack-config": "^2.0.0",
