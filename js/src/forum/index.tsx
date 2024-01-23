@@ -15,7 +15,7 @@ app.initializers.add('blomstra/linear', () => {
     let lx = linear !== null ? linear.split(':::') : 'a:::b';
     let lOrg = lx[0];
     let lId = lx[1];
-    console.log(lOrg);
+
     const canAddToLinear = discussion.attribute('canAddToLinear');
     if (!canAddToLinear) {
       return;
