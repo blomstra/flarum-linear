@@ -123,6 +123,8 @@ class CreateLinearIssueController extends AbstractCreateController
             return $team->organization->urlKey . ':::' . $team->key . '-' . $issue->number;
         }
 
+        $this->logger->error('Linear API client failed to create issue.');
+
         return false;
 
     }
