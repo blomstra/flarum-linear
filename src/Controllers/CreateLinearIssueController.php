@@ -84,7 +84,7 @@ class CreateLinearIssueController extends AbstractCreateController
 
         $vars = $request->getParsedBody();
 
-        if (!isset($vars['team']) || !$vars['discussion'] || !$vars['priority'] || !isset($vars['tags'])) {
+        if (!isset($vars['team']) || !$vars['discussion'] || !isset($vars['priority']) || !isset($vars['tags'])) {
             $this->logger->error('Missing data in Linear Issue Creation endpoint.');
 
             return [];
