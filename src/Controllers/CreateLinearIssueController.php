@@ -106,8 +106,8 @@ class CreateLinearIssueController extends AbstractCreateController
         $postUrl = $this->url->to('forum')->route('discussion', ['id' => $discussion->id]);
         $header = $this->translator->trans('blomstra-linear.lib.original_post');
         $description = trim(Str::limit(
-            "[$header]($postUrl) by [$username]($userUrl) \\n\\n" .
-            $discussion->posts->first()->content . "\\n\\n" .
+            "[$header]($postUrl) by [$username]($userUrl) \n\n" .
+            $discussion->posts->first()->content . "\n\n" .
             "Tags: " . implode(', ', $tags)
             , 16380));
 
@@ -115,6 +115,7 @@ class CreateLinearIssueController extends AbstractCreateController
         $team = $this->teams->getOne($vars['team']);
 
         $issue = $this->issues->create($title, $description, $team);
+
         if ($issue->id) {
             // Update Database
             $discussion->setAttribute('linear_issue_id', $team->organization->urlKey . ':::' . $team->key . '-' . $issue->number);
