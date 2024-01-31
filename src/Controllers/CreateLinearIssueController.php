@@ -100,6 +100,7 @@ class CreateLinearIssueController extends AbstractCreateController
             $tags[] = $tag->getAttribute('name');
         }
 
+        $priority = $vars['priority'];
         $username = $discussion->user->getAttribute('username');
         $userUrl = $this->url->to('forum')->route('user', ['username' => $username]);
         $title = $discussion->getAttribute('title');
@@ -114,7 +115,7 @@ class CreateLinearIssueController extends AbstractCreateController
 
         $team = $this->teams->getOne($vars['team']);
 
-        $issue = $this->issues->create($title, $description, $team);
+        $issue = $this->issues->create($title, $description, $team, $priority);
 
         if ($issue->id) {
             // Update Database
