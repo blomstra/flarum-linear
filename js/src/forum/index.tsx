@@ -10,9 +10,10 @@ import Badge from 'flarum/common/components/Badge';
 app.initializers.add('blomstra/linear', () => {
   extend(DiscussionPage.prototype, 'sidebarItems', function (items) {
     const discussion:Discussion  = this.discussion;
-    let linear = 'a:::b';
+
+    let linear = null;
     linear = discussion.attribute('linearIssueId');
-    let lx = linear !== 'a:::b' ? linear.split(':::') : 'a:::b';
+    let lx = linear !== null ? linear.split(':::') : 'a:::b';
     let lOrg = lx[0];
     let lId = lx[1];
 
@@ -23,7 +24,7 @@ app.initializers.add('blomstra/linear', () => {
 
     items.add(
       'blomstra-linear',
-      linear === 'a:::b' ?
+      linear === null ?
         (
           <Button icon="far fa-paper-plane" class="Button" onclick={() => app.modal.show(SendToLinearModal, { discussion })}>
             {app.translator.trans('blomstra-linear.forum.controls.send_to_linear_button')}
@@ -42,14 +43,14 @@ app.initializers.add('blomstra/linear', () => {
 
   extend(Discussion.prototype, 'badges', function (badges) {
     const discussion = this;
-    let linear = 'a:::b';
+    let linear = null;
     linear = discussion.attribute('linearIssueId');
-    let lx = linear !== 'a:::b' ? linear.split(':::') : 'a:::b';
+    let lx = linear !== null ? linear.split(':::') : 'a:::b';
     let lOrg = lx[0];
     let lId = lx[1];
     const canAddToLinear = discussion.attribute('canAddToLinear');
 
-    if (canAddToLinear && linear !== 'a:::b') {
+    if (canAddToLinear && linear !== null) {
       badges.add(
         'linear',
         <Badge type="linear" icon="far fa-paper-plane" label={app.translator.trans('blomstra-linear.forum.badges.linear.tooltip')} />,
