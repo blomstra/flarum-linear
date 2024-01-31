@@ -19,4 +19,7 @@ blomstra-linear:
 
   lib:
     original_post: Original Post
+  badges:
+    linear:
+      tooltip: This post has been sent to Linear
 
