@@ -117,7 +117,7 @@ export default class SendToLinearModal extends Modal {
     } else {
       return <>
         <div class="Modal-body">
-          <p class="center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loading...</p>
+          <p class="center"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Loading...</p>
         </div>
       </>
     }
