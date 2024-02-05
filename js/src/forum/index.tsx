@@ -10,7 +10,6 @@ import Badge from 'flarum/common/components/Badge';
 app.initializers.add('blomstra/linear', () => {
   extend(DiscussionPage.prototype, 'sidebarItems', function (items) {
     const discussion:Discussion  = this.discussion;
-
     let linear = null;
     linear = discussion.attribute('linearIssueId');
     let lx = linear !== null ? linear.split(':::') : 'a:::b';
@@ -42,13 +41,12 @@ app.initializers.add('blomstra/linear', () => {
   });
 
   extend(Discussion.prototype, 'badges', function (badges) {
-    const discussion = this;
     let linear = null;
-    linear = discussion.attribute('linearIssueId');
+    linear = this.attribute('linearIssueId');
     let lx = linear !== null ? linear.split(':::') : 'a:::b';
     let lOrg = lx[0];
     let lId = lx[1];
-    const canAddToLinear = discussion.attribute('canAddToLinear');
+    const canAddToLinear = this.attribute('canAddToLinear');
 
     if (canAddToLinear && linear !== null) {
       badges.add(
