@@ -12,7 +12,7 @@ app.initializers.add('blomstra/linear', () => {
     const discussion:Discussion  = this.discussion;
     let linear = null;
     linear = discussion.attribute('linearIssueId');
-    let lx = linear !== null ? linear.split(':::') : 'a:::b';
+    let lx = linear !== null && linear !== undefined ? linear.split(':::') : 'a:::b';
     let lOrg = lx[0];
     let lId = lx[1];
 
@@ -43,7 +43,7 @@ app.initializers.add('blomstra/linear', () => {
   extend(Discussion.prototype, 'badges', function (badges) {
     let linear = null;
     linear = this.attribute('linearIssueId');
-    let lx = linear !== null ? linear.split(':::') : 'a:::b';
+    let lx = linear !== undefined && linear !== null ? linear.split(':::') : 'a:::b';
     let lOrg = lx[0];
     let lId = lx[1];
     const canAddToLinear = this.attribute('canAddToLinear');
