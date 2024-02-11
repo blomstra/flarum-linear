@@ -35,7 +35,7 @@ app.initializers.add('blomstra/linear', () => {
             href={"https://linear.app/" + lOrg + "/issue/" + lId}
             external={true}
             target="_blank">
-            Open in Linear
+            {app.translator.trans('blomstra-linear.forum.controls.open_in_linear_button')}
           </LinkButton>
   ), 100);
   });

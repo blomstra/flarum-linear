@@ -14,8 +14,15 @@ blomstra-linear:
 
 
   forum:
+    modals:
+      title: Send to Linear
+      loading: Loading...
+      fields:
+        priority: Priority
+        team: Team
     controls:
       send_to_linear_button: Send to Linear
+      open_in_linear_button: Open in Linear
 
   lib:
     original_post: Original Post

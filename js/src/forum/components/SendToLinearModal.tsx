@@ -58,7 +58,7 @@ export default class SendToLinearModal extends Modal {
 
   title() {
     // Title of the modal.
-    return 'Send to Linear';
+    return app.translator.trans('blomstra-linear.forum.modals.title')
   }
 
   content() {
@@ -67,7 +67,9 @@ export default class SendToLinearModal extends Modal {
       <div class="Modal-body">
         <div class="Form">
           <div class="Form-group">
-            <label>Team</label>
+            <label>
+              {app.translator.trans('blomstra-linear.forum.modals.fields.team')}
+            </label>
             <span class="Select">
               <select
                 value={this.selectedTeam}
@@ -86,7 +88,9 @@ export default class SendToLinearModal extends Modal {
             </span>
           </div>
           <div class="Form-group">
-            <label>Priority</label>
+            <label>
+              {app.translator.trans('blomstra-linear.forum.modals.fields.priority')}
+            </label>
             <span class="Select">
               <select
                 class="Select-input FormControl"
@@ -107,7 +111,8 @@ export default class SendToLinearModal extends Modal {
           </div>
           <div class="Form-group">
             <Button className="Button Button--primary" type="submit">
-              <i id="linear-submission-loading" class="fa fa-spinner fa-spin visually-hidden" aria-hidden="true"></i> Send to Linear
+              <i id="linear-submission-loading" class="fa fa-spinner fa-spin visually-hidden" aria-hidden="true"></i>
+              {app.translator.trans('blomstra-linear.forum.controls.send_to_linear_button')}
             </Button>
           </div>
         </div>
@@ -116,7 +121,10 @@ export default class SendToLinearModal extends Modal {
     } else {
       return <>
         <div class="Modal-body">
-          <p class="center"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Loading...</p>
+          <p class="center">
+            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+            {app.translator.trans('blomstra-linear.forum.modals.loading')}
+          </p>
         </div>
       </>
     }
