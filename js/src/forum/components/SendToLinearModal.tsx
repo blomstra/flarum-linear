@@ -152,6 +152,11 @@ export default class SendToLinearModal extends Modal {
         }
       }
     ).then((response) => {
+      app.forum.pushAttributes({
+        blomstraLinearLastPriority: this.selectedPriority,
+        blomstraLinearLastTeamId: this.selectedTeam,
+      })
+
       //console.log(response);
       if (response.data.id !== undefined || response.data.id !== null) {
         this.attrs.linear = response.data.id;
