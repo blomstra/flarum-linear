@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/blomstra/flarum-linear.svg)](https://packagist.org/packages/blomstra/flarum-linear) [![Total Downloads](https://img.shields.io/packagist/dt/blomstra/flarum-linear.svg)](https://packagist.org/packages/blomstra/flarum-linear)
 
-A [Flarum](http://flarum.org) extension. Create Trello cards from Flarum discussions
+A [Flarum](http://flarum.org) extension. Create Linear issues from Flarum discussions
 
 ## Installation
 
