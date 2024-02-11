@@ -1,9 +1,6 @@
-import Modal, {IInternalModalAttrs} from 'flarum/common/components/Modal';
+import Modal from 'flarum/common/components/Modal';
 import app from "flarum/forum/app";
 import Button from "flarum/common/components/Button";
-import Model from 'flarum/common/Model';
-import DiscussionPage from "flarum/forum/components/DiscussionPage";
-import Discussion from "flarum/common/models/Discussion";
 
 export default class SendToLinearModal extends Modal {
   static isDismissibleViaCloseButton = true;
@@ -13,22 +10,11 @@ export default class SendToLinearModal extends Modal {
   teams = [];
   priorities = [];
   defaultTeam = '';
-  ready = false;
   selectedTeam = '';
   selectedPriority = 0;
-  discussion = '';
   tags = [];
 
-  getTags(): void {
-    let tags = this.attrs.discussion !== '' ? this.attrs.discussion.tags() : [];
-    tags.map((tag) => {
-      this.tags.push(tag.data.id)
-    });
-  }
-
   loadData(): void {
-
-    this.getTags();
     m.request(
       {
         method: "GET",
@@ -125,8 +111,6 @@ export default class SendToLinearModal extends Modal {
         </div>
       </>
     }
-    // Content to show in the modal's body
-
   }
 
   onsubmit(e) {
@@ -134,6 +118,7 @@ export default class SendToLinearModal extends Modal {
     // If your modal contains a form, you can add form processing logic here.
     // Show the icon in the submit button
     document.getElementById('linear-submission-loading').classList.remove('visually-hidden');
+
     m.request(
       {
         method: "POST",
@@ -154,7 +139,6 @@ export default class SendToLinearModal extends Modal {
         blomstraLinearLastTeamId: this.selectedTeam,
       })
 
-      //console.log(response);
       if (response.data.id !== undefined || response.data.id !== null) {
         this.attrs.linear = response.data.id;
         app.current.data.discussion.data.attributes.linearIssueId = response.data.id;
