@@ -93,8 +93,7 @@ export default class SendToLinearModal extends Modal {
                 value={this.selectedPriority}
                 onchange={(e) => {
                   this.selectedPriority = e.target.value;
-                }
-                }
+                }}
               >
                 {this.priorities.map((priority) => {
                   return <option
@@ -162,7 +161,12 @@ export default class SendToLinearModal extends Modal {
     super.oninit(vnode);
     this.loadData();
     this.defaultTeam = app.forum.attribute('blomstraLinearDefaultTeamId');
-    this.selectedTeam = this.defaultTeam;
+
+    const lastTeam = app.forum.attribute('blomstraLinearLastTeamId');
+    const lastPriority = app.forum.attribute('blomstraLinearLastPriority');
+
+    this.selectedTeam = this.defaultTeam ?? lastTeam;
+    this.selectedPriority = lastPriority
   }
 
 }

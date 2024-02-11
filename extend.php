@@ -44,7 +44,9 @@ return [
 
 
     (new Extend\Settings)
-        ->serializeToForum('blomstraLinearDefaultTeamId', 'blomstra-linear.default-team'),
+        ->serializeToForum('blomstraLinearDefaultTeamId', 'blomstra-linear.default-team')
+        ->serializeToForum('blomstraLinearLastTeamId', 'blomstra-linear.last-team-id')
+        ->serializeToForum('blomstraLinearLastPriority', 'blomstra-linear.last-priority'),
 
     (new Extend\ApiSerializer(DiscussionSerializer::class))
         ->attribute('linearIssueId', function (DiscussionSerializer $serializer, Discussion $discussion, array $attributes) {

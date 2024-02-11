@@ -112,6 +112,8 @@ class CreateLinearIssueController extends AbstractCreateController
             "Tags: " . implode(', ', $tags)
             , 16380));
 
+        $this->settings->set('blomstra-linear.last-team-id', $vars['team']);
+        $this->settings->set('blomstra-linear.last-priority', $vars['priority']);
 
         $team = $this->teams->getOne($vars['team']);
 
