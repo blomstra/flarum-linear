@@ -6,8 +6,9 @@ import DiscussionPage from "flarum/forum/components/DiscussionPage";
 import Discussion from "flarum/common/models/Discussion";
 
 export default class SendToLinearModal extends Modal {
-  // True by default, dictates whether the modal can be dismissed by clicking on the background or in the top right corner.
-  static isDismissible = true;
+  static isDismissibleViaCloseButton = true;
+  static isDismissibleViaEscKey = true;
+  static isDismissibleViaBackdropClick = true;
 
   teams = [];
   priorities = [];
