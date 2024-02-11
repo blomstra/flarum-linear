@@ -45,10 +45,6 @@ export default class SendToLinearModal extends Modal {
     ).then((response) => {
       this.priorities = response.data.attributes;
     });
-
-    this.selectedTeam = this.defaultTeam;
-    this.selectedPriority = 0;
-
   }
 
   className() {
@@ -173,13 +169,13 @@ export default class SendToLinearModal extends Modal {
   oninit(vnode) {
     super.oninit(vnode);
     this.loadData();
+
     this.defaultTeam = app.forum.attribute('blomstraLinearDefaultTeamId');
+    const lastSelectedTeam = app.forum.attribute('blomstraLinearLastTeamId');
 
-    const lastTeam = app.forum.attribute('blomstraLinearLastTeamId');
-    const lastPriority = app.forum.attribute('blomstraLinearLastPriority');
+    this.selectedTeam = this.defaultTeam ?? lastSelectedTeam;
 
-    this.selectedTeam = this.defaultTeam ?? lastTeam;
-    this.selectedPriority = lastPriority
+    this.selectedPriority = app.forum.attribute('blomstraLinearLastPriority') ?? 0;
   }
 
 }
