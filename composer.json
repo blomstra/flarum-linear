@@ -1,6 +1,6 @@
 {
     "name": "blomstra/flarum-linear",
-    "description": "A Flarum Intergation with Linear to create issues from discussions",
+    "description": "A Flarum Integration with Linear to create issues from discussions",
     "keywords": [
         "flarum",
         "linear"
