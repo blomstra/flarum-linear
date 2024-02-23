@@ -35,10 +35,10 @@ export function addLinearLabelMappingToTagEditModal () {
                     <Button
                         className="Button"
                         value={label.id}
-                        active={this.linearLabelId?.id === label.id}
+                        active={this.linearLabelId === label.id}
                         type="button"
                         onclick={() => {
-                            this.linearLabelId = label
+                            this.linearLabelId = label.id
                         }}
                     >
                         {label.name}
@@ -58,7 +58,7 @@ export function addLinearLabelMappingToTagEditModal () {
     })
 
     extend(EditTagModal.prototype, 'submitData', function (data) {
-        data.linearLabelId = this.linearLabelId?.id
+        data.linearLabelId = this.linearLabelId
 
         return data
     })
