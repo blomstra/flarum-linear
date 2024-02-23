@@ -1,18 +1,8 @@
 import app from 'flarum/admin/app';
-import {extend} from "flarum/common/extend";
-import EditTagModal  from 'flarum/tags/admin/components/EditTagModal';
+import { addLinearLabelMappingToTagEditModal } from "./addLinearLabelMappingToTagEditModal";
 
 app.initializers.add('blomstra-linear', () => {
-    extend(EditTagModal.prototype, 'fields', (items) => {
-        items.add(
-            'linear-tag',
-            <div className="Form-group">
-                <label>LInear Tag</label>
-                SELECT DROPDOWN HERE
-            </div>,
-            50
-        );
-    })
+    addLinearLabelMappingToTagEditModal();
 
     app.extensionData
       .for('blomstra-linear')
