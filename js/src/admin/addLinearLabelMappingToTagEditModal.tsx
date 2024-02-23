@@ -26,22 +26,33 @@ export function addLinearLabelMappingToTagEditModal () {
     })
 
     extend(EditTagModal.prototype, 'fields', function (items) {
+        const LinearLabelOptions = [
+            {
+                value: null,
+                text: app.translator.trans(`blomstra-linear.admin.tags.fields.linear_label_id.default_select_value`),
+            },
+            ...labels.map((label) => ({
+                value: label.id,
+                text: label.name,
+            }))
+        ]
+
         const makeLinearLabelSelect = () => ((
             <SelectDropdown
                 buttonClassName="Button Button--inverted"
                 defaultLabel={app.translator.trans(`blomstra-linear.admin.tags.fields.linear_label_id.default_select_value`)}
             >
-                {labels.map(label => (
+                {LinearLabelOptions.map(option => (
                     <Button
                         className="Button"
-                        value={label.id}
-                        active={this.linearLabelId === label.id}
+                        value={option.value}
+                        active={this.linearLabelId === option.value}
                         type="button"
                         onclick={() => {
-                            this.linearLabelId = label.id
+                            this.linearLabelId = option.value
                         }}
                     >
-                        {label.name}
+                        {option.text}
                     </Button>
                 ))}
             </SelectDropdown>
