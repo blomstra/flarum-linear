@@ -95,10 +95,14 @@ class CreateLinearIssueController extends AbstractCreateController
         $discussion = $dr->findOrFail($vars['discussion'], $u);
 
         $tags = [];
+        $linearLabels = [];
 
         foreach ($discussion->getAttribute('tags') as $tag) {
             $tags[] = $tag->getAttribute('name');
+            $linearLabels[] = $tag->getAttribute('linear_label_id');
         }
+
+        $linearLabels = array_values(array_unique(array_filter($linearLabels)));
 
         $priority = $vars['priority'];
         $username = $discussion->user->getAttribute('username');
@@ -117,7 +121,7 @@ class CreateLinearIssueController extends AbstractCreateController
 
         $team = $this->teams->getOne($vars['team']);
 
-        $issue = $this->issues->create($title, $description, $team, $priority);
+        $issue = $this->issues->create($title, $description, $team, $priority, null, $linearLabels);
 
         if ($issue->id) {
             // Update Database
