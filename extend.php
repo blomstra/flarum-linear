@@ -20,10 +20,14 @@ use Blomstra\Linear\Providers\LinearPrioritiesServiceProvider;
 use Flarum\Api\Serializer\DiscussionSerializer;
 use Flarum\Tags\Api\Serializer\TagSerializer;
 use Flarum\Tags\Tag;
+use Flarum\Tags\Event\Saving as TagSaving;
 use Flarum\Discussion\Discussion;
 use Flarum\Extend;
 
 return [
+    (new Extend\Event)
+        ->listen(TagSaving::class, Tags\Listeners\AssignLinearLabel::class),
+
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/resources/less/forum.less'),

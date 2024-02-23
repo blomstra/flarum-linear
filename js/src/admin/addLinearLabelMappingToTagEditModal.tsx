@@ -48,7 +48,7 @@ export function addLinearLabelMappingToTagEditModal () {
         ));
 
         items.add(
-            'linear_label_id',
+            'linearLabelId',
             <div className="Form-group">
                 <label>{app.translator.trans(`blomstra-linear.admin.tags.fields.linear_label_id.label`)}</label>
                 {makeLinearLabelSelect()}
