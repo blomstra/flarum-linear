@@ -16,6 +16,7 @@ use Blomstra\Linear\Controllers\ListPrioritiesController;
 use Blomstra\Linear\Controllers\ListTeamsController;
 use Blomstra\Linear\Controllers\CreateLinearIssueController;
 use Blomstra\Linear\Providers\LinearIssuesServiceProvider;
+use Blomstra\Linear\Providers\LinearLabelsServiceProvider;
 use Blomstra\Linear\Providers\LinearTeamsServiceProvider;
 use Blomstra\Linear\Providers\LinearPrioritiesServiceProvider;
 use Flarum\Api\Serializer\DiscussionSerializer;
@@ -48,6 +49,7 @@ return [
     (new Extend\ServiceProvider())
         ->register(LinearTeamsServiceProvider::class)
         ->register(LinearPrioritiesServiceProvider::class)
+        ->register(LinearLabelsServiceProvider::class)
         ->register(LinearIssuesServiceProvider::class),
 
     (new Extend\ApiSerializer(TagSerializer::class))
