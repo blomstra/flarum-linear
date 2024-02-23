@@ -18,6 +18,8 @@ use Blomstra\Linear\Providers\LinearIssuesServiceProvider;
 use Blomstra\Linear\Providers\LinearTeamsServiceProvider;
 use Blomstra\Linear\Providers\LinearPrioritiesServiceProvider;
 use Flarum\Api\Serializer\DiscussionSerializer;
+use Flarum\Tags\Api\Serializer\TagSerializer;
+use Flarum\Tags\Tag;
 use Flarum\Discussion\Discussion;
 use Flarum\Extend;
 
@@ -42,6 +44,10 @@ return [
         ->register(LinearPrioritiesServiceProvider::class)
         ->register(LinearIssuesServiceProvider::class),
 
+    (new Extend\ApiSerializer(TagSerializer::class))
+        ->attribute('linearLabelId', function (TagSerializer $serializer, Tag $tag, array $attributes) {
+            return $tag->linear_label_id;
+        }),
 
     (new Extend\Settings)
         ->serializeToForum('blomstraLinearDefaultTeamId', 'blomstra-linear.default-team')
