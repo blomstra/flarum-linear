@@ -11,6 +11,7 @@
 
 namespace Blomstra\Linear;
 
+use Blomstra\Linear\Controllers\ListLabelsController;
 use Blomstra\Linear\Controllers\ListPrioritiesController;
 use Blomstra\Linear\Controllers\ListTeamsController;
 use Blomstra\Linear\Controllers\CreateLinearIssueController;
@@ -40,7 +41,8 @@ return [
     (new Extend\Routes('api'))
         ->get('/linear/teams', 'teams.list', ListTeamsController::class)
         ->get('/linear/priorities', 'priorities.list', ListPrioritiesController::class)
-        ->post('/linear/issues', 'issues.create', CreateLinearIssueController::class),
+        ->post('/linear/issues', 'issues.create', CreateLinearIssueController::class)
+        ->get('/linear/labels', 'labels.list', ListLabelsController::class),
 
 
     (new Extend\ServiceProvider())

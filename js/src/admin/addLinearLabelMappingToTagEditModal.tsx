@@ -16,9 +16,10 @@ export function addLinearLabelMappingToTagEditModal () {
 
     m.request({
         method: "GET",
-        url: "/api/linear/teams",
+        url: "/api/linear/labels",
     }).then((response) => {
         labels = response.data.attributes
+        console.error(response.data)
     })
 
     extend(EditTagModal.prototype, 'oninit', function () {

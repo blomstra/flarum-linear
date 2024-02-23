@@ -7,7 +7,6 @@ use Linear\Sdk\Labels;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Psr\Log\LoggerInterface;
-use Linear\Sdk\Teams;
 use Tobscure\JsonApi\Document;
 use Flarum\Http\RequestUtil;
 use Flarum\Api\Controller\AbstractShowController;
@@ -42,7 +41,7 @@ class ListLabelsController extends AbstractShowController
      */
     protected $labels;
 
-    public function __construct(SettingsRepositoryInterface $settings, TranslatorInterface $translator, LoggerInterface $logger, Teams $labels)
+    public function __construct(SettingsRepositoryInterface $settings, TranslatorInterface $translator, LoggerInterface $logger, Labels $labels)
     {
         $this->settings = $settings;
         $this->translator = $translator;
