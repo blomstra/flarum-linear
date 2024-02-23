@@ -1,36 +1,45 @@
 import app from 'flarum/admin/app';
+import {extend} from "flarum/common/extend";
+import EditTagModal  from 'flarum/tags/admin/components/EditTagModal';
 
 app.initializers.add('blomstra-linear', () => {
-  app.extensionData
-    .for('blomstra-linear')
-    .registerSetting({
-      setting: 'blomstra-linear.token',
-      type: 'password',
-      label: app.translator.trans('blomstra-linear.admin.settings.token_label'),
-      help: app.translator.trans('blomstra-linear.admin.settings.token_description'),
+    extend(EditTagModal.prototype, 'fields', (items) => {
+        items.add(
+            'linear-tag',
+            <div className="Form-group">
+                <label>LInear Tag</label>
+                SELECT DROPDOWN HERE
+            </div>,
+            50
+        );
     })
-    .registerSetting({
-      setting: 'blomstra-linear.cachettl',
-      type: 'number',
-      default: 0,
-      label: app.translator.trans('blomstra-linear.admin.settings.cachettl_label'),
-      help: app.translator.trans('blomstra-linear.admin.settings.cachettl_description'),
-    })
-    .registerPermission(
-      {
-        icon: 'fab fa-trello',
-        label: app.translator.trans('blomstra-linear.admin.permissions.add_to_linear'),
-        permission: 'discussion.addToLinear',
-      },
-      'start'
-    );
 
-  if ('blomstra-linear.token' in app.data.settings && app.data.settings['blomstra-linear.token'] !== '') {
-    app.extensionData.for('blomstra-linear').registerSetting(function () {
-      return (
-        <div className="Form-group">
-          <h2> {app.translator.trans('blomstra-linear.admin.settings.teams_header')} </h2>
-        </div>
+    app.extensionData
+      .for('blomstra-linear')
+      .registerSetting(
+        {
+          setting: 'blomstra-linear.token',
+          type: 'password',
+          label: app.translator.trans('blomstra-linear.admin.settings.token_label'),
+          help: app.translator.trans('blomstra-linear.admin.settings.token_description'),
+        }
+      )
+      .registerSetting(
+        {
+          setting: 'blomstra-linear.cachettl',
+          type: 'number',
+          default: 0,
+          label: app.translator.trans('blomstra-linear.admin.settings.cachettl_label'),
+          help: app.translator.trans('blomstra-linear.admin.settings.cachettl_description'),
+        }
+      )
+      .registerPermission(
+        {
+          icon: 'fab fa-trello',
+          label: app.translator.trans('blomstra-linear.admin.permissions.add_to_linear'),
+          permission: 'discussion.addToLinear',
+        },
+        'start'
       );
     });
     // Make a request to the API to get the teams
