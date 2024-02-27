@@ -2,6 +2,11 @@ blomstra-linear:
   admin:
     permissions:
       add_to_linear: Add to Linear
+    tags:
+      fields:
+        linear_label_id:
+          label: Map to Linear Label
+          default_select_value: No label
     settings:
       title: Blomstra Linear
       token_label: Your Linear Personal Access Token

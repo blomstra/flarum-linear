@@ -11,17 +11,25 @@
 
 namespace Blomstra\Linear;
 
+use Blomstra\Linear\Controllers\ListLabelsController;
 use Blomstra\Linear\Controllers\ListPrioritiesController;
 use Blomstra\Linear\Controllers\ListTeamsController;
 use Blomstra\Linear\Controllers\CreateLinearIssueController;
 use Blomstra\Linear\Providers\LinearIssuesServiceProvider;
+use Blomstra\Linear\Providers\LinearLabelsServiceProvider;
 use Blomstra\Linear\Providers\LinearTeamsServiceProvider;
 use Blomstra\Linear\Providers\LinearPrioritiesServiceProvider;
 use Flarum\Api\Serializer\DiscussionSerializer;
+use Flarum\Tags\Api\Serializer\TagSerializer;
+use Flarum\Tags\Tag;
+use Flarum\Tags\Event\Saving as TagSaving;
 use Flarum\Discussion\Discussion;
 use Flarum\Extend;
 
 return [
+    (new Extend\Event)
+        ->listen(TagSaving::class, Tags\Listeners\AssignLinearLabel::class),
+
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/resources/less/forum.less'),
@@ -34,14 +42,20 @@ return [
     (new Extend\Routes('api'))
         ->get('/linear/teams', 'teams.list', ListTeamsController::class)
         ->get('/linear/priorities', 'priorities.list', ListPrioritiesController::class)
-        ->post('/linear/issues', 'issues.create', CreateLinearIssueController::class),
+        ->post('/linear/issues', 'issues.create', CreateLinearIssueController::class)
+        ->get('/linear/labels', 'labels.list', ListLabelsController::class),
 
 
     (new Extend\ServiceProvider())
         ->register(LinearTeamsServiceProvider::class)
         ->register(LinearPrioritiesServiceProvider::class)
+        ->register(LinearLabelsServiceProvider::class)
         ->register(LinearIssuesServiceProvider::class),
 
+    (new Extend\ApiSerializer(TagSerializer::class))
+        ->attribute('linearLabelId', function (TagSerializer $serializer, Tag $tag, array $attributes) {
+            return $tag->linear_label_id;
+        }),
 
     (new Extend\Settings)
         ->serializeToForum('blomstraLinearDefaultTeamId', 'blomstra-linear.default-team')
