@@ -23,7 +23,7 @@ export function addLinearLabelMappingToTagEditModal () {
     })
 
     extend(EditTagModal.prototype, 'oninit', function () {
-        this.linearLabelId = this.tag.data.attributes.linearLabelId
+      this.linearLabelId = this.tag.data.attributes?.linearLabelId
     })
 
     extend(EditTagModal.prototype, 'fields', function (items) {
