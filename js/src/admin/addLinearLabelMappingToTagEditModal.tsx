@@ -40,6 +40,7 @@ export function addLinearLabelMappingToTagEditModal () {
 
         const makeLinearLabelSelect = () => ((
             <SelectDropdown
+                className="Dropdown--linear-labels"
                 buttonClassName="Button Button--inverted"
                 defaultLabel={app.translator.trans(`blomstra-linear.admin.tags.fields.linear_label_id.default_select_value`)}
             >
