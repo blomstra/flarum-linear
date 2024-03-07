@@ -35,6 +35,7 @@ return [
         ->css(__DIR__.'/resources/less/forum.less'),
 
     (new Extend\Frontend('admin'))
+        ->css(__DIR__.'/less/admin.less')
         ->js(__DIR__.'/js/dist/admin.js'),
 
     new Extend\Locales(__DIR__.'/resources/locale'),
