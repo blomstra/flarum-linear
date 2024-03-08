@@ -60,7 +60,7 @@ class ListLabelsController extends AbstractShowController
             return [];
         }
 
-        return $this->labels->getAll()->nodes;
+        return $this->labels->getWorkspaceLabels()->nodes;
     }
 }
 
