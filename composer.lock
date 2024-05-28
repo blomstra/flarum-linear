@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d6381fb754e510531ad2412aaebc73b",
+    "content-hash": "0706e972160e9b3691d85591767add0c",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -61,16 +61,16 @@
         },
         {
             "name": "blomstra/linear",
-            "version": "0.1.4",
+            "version": "0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blomstra/linear.git",
-                "reference": "71df2518c8d4519111f3d38e15e18a864d72a902"
+                "reference": "4ca34083f27f9dc50ef8526436daa2b6e5d19005"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blomstra/linear/zipball/71df2518c8d4519111f3d38e15e18a864d72a902",
-                "reference": "71df2518c8d4519111f3d38e15e18a864d72a902",
+                "url": "https://api.github.com/repos/blomstra/linear/zipball/4ca34083f27f9dc50ef8526436daa2b6e5d19005",
+                "reference": "4ca34083f27f9dc50ef8526436daa2b6e5d19005",
                 "shasum": ""
             },
             "require": {
@@ -101,9 +101,9 @@
             ],
             "support": {
                 "issues": "https://github.com/blomstra/linear/issues",
-                "source": "https://github.com/blomstra/linear/tree/0.1.4"
+                "source": "https://github.com/blomstra/linear/tree/0.1.6"
             },
-            "time": "2024-01-31T12:50:52+00:00"
+            "time": "2024-03-07T17:39:46+00:00"
         },
         {
             "name": "brick/math",
@@ -8948,5 +8948,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

@@ -15,7 +15,7 @@
     "require": {
         "php": "^8.0",
         "flarum/core": "^1.8",
-        "blomstra/linear": "^0.1.5"
+        "blomstra/linear": "^0.1.6"
     },
     "authors": [
         {
